@@ -23,19 +23,15 @@ public class PluginClass extends JavaPlugin {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        AbstractGui gui = new ContentGui((Player) sender, 18);
+        ContentGui gui = new ContentGui((Player) sender, 18);
 
         List<ItemStack> list = new ArrayList();
         for(int i = 0; i < 20; i++) {
-            int finalI = i;
-            list.add(new ItemStack(Material.WATCH) {{
-                ItemMeta meta = this.getItemMeta();
-                meta.setDisplayName("item: " + finalI);
-                this.setItemMeta(meta);
-            }});
+            list.add(new ItemStack(Material.WATCH));
         }
-
-        ((ContentGui) gui).setContent(list);
+        gui.setDisplay_size(9);
+        gui.setDisplay_offset(0);
+        gui.setContent(list);
 
         guiManager.registerGui((Player) sender, gui);
         return true;

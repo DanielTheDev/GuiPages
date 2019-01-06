@@ -13,7 +13,7 @@ public class ContentGui extends AbstractGui {
     private boolean init = true;
 
     private int page = 1;
-    private int start_offset = 0;
+    private int display_offset = 0;
     private int display_size = 9;
 
     private List<ItemStack> content;
@@ -65,7 +65,7 @@ public class ContentGui extends AbstractGui {
 
             int size = this.getContent().size();
             int loc = 0;
-            for(int i = this.start_offset; i < this.start_offset+this.display_size; i++) {
+            for(int i = this.display_offset; i < this.display_offset+this.display_size; i++) {
                 loc = i + ((this.display_size*page)-this.display_size);
                 if(size == loc) {
                     break;
@@ -76,8 +76,8 @@ public class ContentGui extends AbstractGui {
         }
     }
 
-    public void setStart_offset(int start_offset) {
-        this.start_offset = start_offset;
+    public void setDisplay_offset(int display_offset) {
+        this.display_offset = display_offset;
     }
 
     public void setDisplay_size(int display_size) {
@@ -115,5 +115,21 @@ public class ContentGui extends AbstractGui {
     @Override
     public void onInventoryDragEvent(InventoryDragEvent e) {
         e.setCancelled(true);
+    }
+
+    public int getPage() {
+        return page;
+    }
+
+    public int getDisplay_offset() {
+        return display_offset;
+    }
+
+    public int getDisplay_size() {
+        return display_size;
+    }
+
+    public int getMax_page() {
+        return max_page;
     }
 }
