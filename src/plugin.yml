@@ -1,0 +1,7 @@
+main: com.gui.pages.PluginClass
+name: GuiPages
+description: nothing
+version: 1.0.1
+commands:
+  gui:
+    description: nothing
